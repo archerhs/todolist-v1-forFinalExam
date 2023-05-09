@@ -16,7 +16,7 @@ let workItems = ["Show Up"];
 let funItems = ["Watch TV", "Read a Book"];
 // set an empty array for new weekend items
 let weekendItems = ["Relax", "Watch TV"];
-
+let finalExamItems = ["AJS 300", "ENG 300", "ICS 360"];
 // set EJS as the viewing engine to display html
 app.set('view engine', 'ejs');
 
@@ -33,7 +33,7 @@ app.get("/", function(req, res) {
     let day = date.getDate();
     
     // use EJS render to display the day and the To Do List
-    res.render("list", {listTitle: day, newListItems: items});
+    res.render("list", {listTitle: day, newListItems: items, uhmcImage: "http://maui.hawaii.edu/mli/wp-content/uploads/2014/04/UHMC-Header.jpg"});
     
 });
 
@@ -71,19 +71,23 @@ app.post("/", function(req, res) {
 app.get("/work", function(req, res){
 
   let day = date.getDate();
-    res.render("list", {listTitle: "Work To Do List", newListItems: workItems})
+    res.render("list", {listTitle: "Work To Do List", newListItems: workItems, uhmcImage: "http://maui.hawaii.edu/mli/wp-content/uploads/2014/04/UHMC-Header.jpg"}) 
+    
 });
 
 // display fun to do list
 app.get("/fun", function(req, res){
 
   let day = date.getDate();
-    res.render("list", {listTitle: "Fun To Do List", newListItems: funItems})
+    res.render("list", {listTitle: "Fun To Do List", newListItems: funItems, uhmcImage: "http://maui.hawaii.edu/mli/wp-content/uploads/2014/04/UHMC-Header.jpg"})
 });
 
 // display weekend to do list
 app.get("/weekend", function(req, res){
-    res.render("list", {listTitle: "Weekend To Do List", newListItems: weekendItems})
+    res.render("list", {listTitle: "Weekend To Do List", newListItems: weekendItems, uhmcImage: "http://maui.hawaii.edu/m"})
+});
+app.get("/finals",function(req, res){
+    res.render("list",{listTitle: "Final Exams To Take Full List", newListItems: finalExamItems})
 });
 
 app.listen(3000, function() {
